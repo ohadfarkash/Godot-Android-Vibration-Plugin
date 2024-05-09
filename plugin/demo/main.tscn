@@ -1,19 +1,67 @@
-[gd_scene load_steps=2 format=3 uid="uid://cg3hylang5fxn"]
+[gd_scene load_steps=2 format=3 uid="uid://cxud5hqqt4yuo"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_j0gfq"]
+[ext_resource type="Script" path="res://main.gd" id="1_2n0d7"]
 
-[node name="Main" type="Node2D"]
-script = ExtResource("1_j0gfq")
+[node name="Main" type="Node"]
+script = ExtResource("1_2n0d7")
 
-[node name="Button" type="Button" parent="."]
-anchors_preset = 14
-anchor_top = 0.5
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 40.0
-offset_top = 250.0
-offset_right = 320.0
-offset_bottom = 312.0
-text = "Hello World"
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Tick"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Click"
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Heavy"
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer4"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Default"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/Button" to="." method="_vibrate_tick"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/Button" to="." method="_vibrate_click"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer3/Button" to="." method="_vibrate_heavy"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer4/Button" to="." method="_vibrate_default"]

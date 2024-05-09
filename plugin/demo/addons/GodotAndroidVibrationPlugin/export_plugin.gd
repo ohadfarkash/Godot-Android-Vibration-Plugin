@@ -3,15 +3,18 @@ extends EditorPlugin
 
 # A class member to hold the editor export plugin during its lifecycle.
 var export_plugin : AndroidExportPlugin
+const AUTOLOAD_NAME = "Vibration"
 
 func _enter_tree():
 	# Initialization of the plugin goes here.
 	export_plugin = AndroidExportPlugin.new()
 	add_export_plugin(export_plugin)
+	add_autoload_singleton(AUTOLOAD_NAME, "res://addons/GodotAndroidVibrationPlugin/vibration_plugin.gd")
 
 
 func _exit_tree():
 	# Clean-up of the plugin goes here.
+	remove_autoload_singleton(AUTOLOAD_NAME)
 	remove_export_plugin(export_plugin)
 	export_plugin = null
 
